@@ -18,8 +18,11 @@ for (var i = 0; i < jsonObject.length; i++) {
 // console.log(userData[1]);
 
 var x = csvData.toString();
+var y = x.split(",");
+console.log(y);
 
-console.log(x);
+var parsed = NameParse.parse(y[4]);
+console.log(parsed);
 
 // for (const key in x) {
 //     // console.log(`${key}: ${csvData[key]}`);
