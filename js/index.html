@@ -11,24 +11,13 @@ var jsonObject = request.responseText.split(/\r?\n|\r/);
 for (var i = 0; i < jsonObject.length; i++) {
   csvData.push(jsonObject[i].split(','));
 }
-// // Retrived data from csv file content
-// console.log(csvData);
-
-// var userData = csvData;
-// console.log(userData[1]);
-
 var x = csvData.toString();
 var y = x.split(",");
 console.log(y);
 
-var parsed = NameParse.parse(y[4]);
-console.log(parsed);
-
-// for (const key in x) {
-//     // console.log(`${key}: ${csvData[key]}`);
-//     var log = `${key}: ${x[key]}`;
-//     console.log(log);
-//     // var parsed = NameParse.parse("Mr. Chales P. Wooten, III");
-// }
+for (var i = 0; i < y.length; i++){
+   var parsed = NameParse.parse(y[i]);
+   console.log(parsed);
+}
 
 </script>

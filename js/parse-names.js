@@ -9,7 +9,7 @@ var NameParse = (function(){
 	}
 	
 		// split full names into the following parts:
-		// - prefix / salutation  (Mr., Mrs., etc)
+		// - prefix / title  (Mr., Mrs., etc)
 		// - given name / first name
 		// - middle initials
 		// - surname / last name 
@@ -33,10 +33,10 @@ var NameParse = (function(){
 
 		var numWords = nameParts.length;
 		// is the first word a title? (Mr. Mrs, etc)
-		var salutation = this.is_salutation(nameParts[0]);
+		var title = this.is_title(nameParts[0]);
 		var suffix = this.is_suffix(nameParts[numWords - 1]);
 		// set the range for the middle part of the name (trim prefixes & suffixes)
-		var start = (salutation) ? 1 : 0;
+		var start = (title) ? 1 : 0;
 		var end = (suffix) ? numWords - 1 : numWords;
 
 		word = nameParts[start];
@@ -83,7 +83,7 @@ var NameParse = (function(){
 	
 		// return the various parts in an array
 		return {
-			"salutation": salutation || "",
+			"title": title || "",
 			"firstName": firstName.trim(),
 			"initials": initials.trim(),
 			"lastName": lastName.trim(),
@@ -96,9 +96,9 @@ var NameParse = (function(){
 		return word.replace(".","");
 	};
 
-	// detect and format standard salutations 
+	// detect and format standard titles 
 	// I'm only considering english honorifics for now & not words like 
-	NameParse.is_salutation = function (word) {
+	NameParse.is_title = function (word) {
 		word = this.removeIgnoredChars(word).toLowerCase();
 		// returns normalized values
 		if (word === "mr" || word === "master" || word === "mister") {
