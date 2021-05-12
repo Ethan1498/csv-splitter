@@ -1,20 +1,24 @@
 <script src="parse-names.js"></script>
+<!-- Run NPM install to install package required! -->
 <script>
+// Set CSV as variable pulled from gist
 var url = "https://gist.githubusercontent.com/Ethan1498/773ca240377187f954c87e31ffb00a69/raw/631a7133b7ae9e6f5177676b69408c824874ea42/examples.csv";
-var name = ["Ethan Gough"];
 var request = new XMLHttpRequest();  
 request.open("GET", url, false);   
 request.send(null);  
 
+// Pull CSV data as Array
 var csvData = new Array();
 var jsonObject = request.responseText.split(/\r?\n|\r/);
 for (var i = 0; i < jsonObject.length; i++) {
   csvData.push(jsonObject[i].split(','));
 }
+
+// Convert Array to string
 var x = csvData.toString();
 var y = x.split(",");
 
-
+// Iterate through each object and parse into name categories
 for (var i = 0; i < y.length; i++){
    var parsed = NameParse.parse(y[i]);
    console.log(parsed);
