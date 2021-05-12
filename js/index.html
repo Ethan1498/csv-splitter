@@ -1,0 +1,31 @@
+<script src="parse-names.js"></script>
+<script>
+var url = "https://gist.githubusercontent.com/Ethan1498/773ca240377187f954c87e31ffb00a69/raw/631a7133b7ae9e6f5177676b69408c824874ea42/examples.csv";
+var name = ["Ethan Gough"];
+var request = new XMLHttpRequest();  
+request.open("GET", url, false);   
+request.send(null);  
+
+var csvData = new Array();
+var jsonObject = request.responseText.split(/\r?\n|\r/);
+for (var i = 0; i < jsonObject.length; i++) {
+  csvData.push(jsonObject[i].split(','));
+}
+// // Retrived data from csv file content
+// console.log(csvData);
+
+// var userData = csvData;
+// console.log(userData[1]);
+
+var x = csvData.toString();
+
+console.log(x);
+
+// for (const key in x) {
+//     // console.log(`${key}: ${csvData[key]}`);
+//     var log = `${key}: ${x[key]}`;
+//     console.log(log);
+//     // var parsed = NameParse.parse("Mr. Chales P. Wooten, III");
+// }
+
+</script>
