@@ -1,6 +1,3 @@
-<body>
-  <div id="printArrayHere"></div>
-</body>
 <script src="parse-names.js"></script>
 <!-- Run NPM install to install package required! -->
 <script>
@@ -18,15 +15,17 @@ for (var i = 0; i < jsonObject.length; i++) {
 }
 
 // Convert Array to string
-var x = csvData.toString();
-var y = x.split(",");
+var toString = csvData.toString();
+let splitString = toString.split(",");
+// // remove first item of array, useless data
+splitString.shift();
 
-// remove every even object in the array, as each even object was empty!
-var newArray = y.filter(value => Object.keys(value).length !== 0);
+// remove every empty object in the array, as each even object was empty!
+var removeEmpty = splitString.filter(value => Object.keys(value).length !== 0);
 
-// Iterate through each object and parse into name categories
-for (var i = 0; i < newArray.length; i++){
-   var parsed = NameParse.parse(newArray[i]);
+// // // Iterate through each object and parse into name categories
+for (var i = 0; i < removeEmpty.length; i++){
+   var parsed = NameParse.parse(removeEmpty[i]);
    console.log(parsed);
 }
 

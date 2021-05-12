@@ -109,8 +109,8 @@ var NameParse = (function(){
 			return "Ms.";
 		} else if (word === "dr") {
 			return "Dr.";
-		} else if (word === "rev") {
-			return "Rev.";
+		} else if (word === "prof") {
+			return "Prof.";
 		} else if (word === "fr") {
 			return "Fr.";
 		} else {
